@@ -4,38 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AFA · Alura — Partner Onboarding</title>
-
-   <script>
+    
+<script>
 const password = "Alura123";
-const userPassword = prompt("Ingresa la contraseña:");
+const userPassword = prompt("Ingrese la contraseña:");
 
 if (userPassword !== password) {
-    document.write(`
-        <html>
-        <head>
-            <title>Acceso denegado</title>
-            <style>
-                body{
-                    font-family: Arial, sans-serif;
-                    display:flex;
-                    justify-content:center;
-                    align-items:center;
-                    height:100vh;
-                    margin:0;
-                    background:#f5f5f5;
-                }
-                h1{
-                    color:#9A2B25;
-                }
-            </style>
-        </head>
-        <body>
-            <h1>Acceso denegado</h1>
-        </body>
-        </html>
-    `);
-
-    throw new Error("Acceso denegado");
+    alert("Contraseña incorrecta");
+    window.location.href = "about:blank";
 }
 </script>
     

@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AFA · Alura — Partner Onboarding</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+
+        :root {
+            --vino: #9A2B25;
+            --vino-600: #9A2B25;
+            --vino-700: #7E221D;
+            --vino-900: #5C1A16;
+            --vino-500: #B23A33;
+            --vino-300: #D88F8A;
+            --vino-100: #F1D9D7;
+            --vino-50: #F9ECEA;
+            --carbon: #2B2E35;
+            --carbon-900: #14161A;
+            --acero: #6B7381;
+            --acero-600: #6B7381;
+            --acero-500: #8B929E;
+            --acero-400: #A8AEB8;
+            --acero-300: #C2C7CF;
+            --niebla: #DBE2EB;
+            --niebla-100: #ECEFF4;
+            --niebla-50: #F5F7FA;
+            --blanco: #FFFFFF;
+            --bg: #DBE2EB;
+            --border: #DBE2EB;
+
+            --w-light: 300;
+            --w-medium: 500;
+            --w-bold: 700;
+
+            --fs-display: 72px;
+            --fs-h1: 48px;
+            --fs-h2: 32px;
+            --fs-h3: 22px;
+            --fs-body: 16px;
+            --fs-small: 14px;
+            --fs-caption: 12px;
+            --fs-eyebrow: 11px;
+
+            --lh-loose: 1.6;
+            --tracking-tight: -0.02em;
+            --tracking-widest: 0.32em;
+
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 10px;
+            --radius-xl: 14px;
+            --radius-pill: 999px;
+            --stroke-1: 1px;
+
+            --space-2: 8px;
+            --space-3: 12px;
+            --space-4: 16px;
+            --space-5: 20px;
+            --space-6: 24px;
+            --space-7: 32px;
+            --space-8: 40px;
+
+            --shadow-card: 0 1px 3px rgba(20,22,26,0.06), 0 1px 2px rgba(20,22,26,0.04);
+            --shadow-pop: 0 10px 32px rgba(20,22,26,0.10);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 110%; }
+
+        body {
+            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg);
+            color: var(--carbon);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            font-weight: 700;
+            letter-spacing: var(--tracking-tight);
+        }
+
+        .wrap {
+            width: 100%;
+            max-width: 1200px;
+            margin-inline: auto;
+            padding-inline: var(--space-7);
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 0 var(--space-7);
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: saturate(140%) blur(10px);
+            -webkit-backdrop-filter: saturate(140%) blur(10px);
+            z-index: 1000;
+            border-bottom: var(--stroke-1) solid var(--border);
+        }
+
+        .logo { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; cursor: pointer; }
+        .logo img { height: 100px; width: auto; }
+
+        .nav-links { display: flex; gap: var(--space-2); list-style: none; align-items: center; }
+        .nav-links a {
+            color: var(--acero); text-decoration: none; font-size: var(--fs-small); font-weight: 400;
+            transition: color 0.2s; padding: 0.5rem 1rem; border-radius: var(--radius-pill); cursor: pointer;
+        }
+        .nav-links a:hover { color: var(--carbon); background: var(--niebla-50); }
+        .nav-links a.active { color: var(--vino); font-weight: 600; }
+
+        section { padding: 72px 5%; }
+
+        .hero {
+            position: relative; isolation: isolate; background: var(--bg);
+            overflow: hidden; min-height: 80px;
+        }
+        .hero__gradient { position: absolute; inset: 0; z-index: -1; background: linear-gradient(45deg, #9A2B25 0%, #2B2E35 100%); }
+        .hero__pattern { position: absolute; inset: 0; z-index: -1; background-image: radial-gradient(rgba(255,255,255,0.5) 1px, transparent 1px); background-size: 32px 32px; opacity: 0.15; animation: dots-drift 12s linear infinite; }
+        .hero__pattern-2 { position: absolute; inset: 0; z-index: -1; background-image: radial-gradient(rgba(255,255,255,0.4) 1.5px, transparent 1.5px); background-size: 48px 48px; opacity: 0.08; animation: dots-pulse 5s ease-in-out infinite alternate; }
+        @keyframes dots-drift { 0% { background-position: 0 0; } 100% { background-position: 32px 32px; } }
+        @keyframes dots-pulse { 0% { opacity: 0.05; } 100% { opacity: 0.14; } }
+        .hero__inner { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); align-items: center; min-height: clamp(80px, 13vh, 130px); padding-block: clamp(56px, 9vw, 112px); }
+        .hero__text { max-width: 640px; text-align: center; margin-inline: auto; }
+        .hero__title { font-weight: var(--w-light); font-size: clamp(38px, 6vw, var(--fs-display)); line-height: 1.04; letter-spacing: var(--tracking-tight); color: var(--blanco); margin: var(--space-5) 0 0; text-wrap: balance; }
+        .hero__title b { font-weight: var(--w-bold); color: var(--blanco); }
+        .hero__lead { font-size: clamp(16px, 1.4vw, 19px); line-height: var(--lh-loose); color: rgba(255,255,255,0.75); max-width: 46ch; margin: var(--space-6) auto 0; }
+        .hero__cta { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-8); justify-content: center; }
+
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
+            font-family: 'Inter', sans-serif; font-weight: var(--w-medium); font-size: var(--fs-small);
+            line-height: 1; padding: 0 var(--space-5); height: 44px; border-radius: var(--radius-sm);
+            border: var(--stroke-1) solid transparent; cursor: pointer; text-decoration: none;
+            white-space: nowrap; transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+        }
+        .btn--primary { background: var(--vino-600); color: var(--blanco); }
+        .btn--primary:hover { background: var(--vino-700); }
+        .btn--primary:active { background: var(--vino-900); }
+        .btn--secondary { background: var(--blanco); color: var(--carbon); border-color: var(--acero-600); }
+        .btn--secondary:hover { background: var(--niebla-100); }
+        .btn--secondary:active { background: var(--niebla); border-color: var(--carbon); }
+        .hero .btn--primary { background: var(--blanco); color: var(--vino-600); }
+        .hero .btn--primary:hover { background: var(--niebla-100); }
+        .hero .btn--secondary { background: transparent; color: var(--blanco); border-color: rgba(255,255,255,0.4); }
+        .hero .btn--secondary:hover { background: rgba(255,255,255,0.1); border-color: var(--blanco); }
+
+        .eyebrow { font-family: 'Inter', sans-serif; font-weight: var(--w-medium); font-size: var(--fs-eyebrow); line-height: 1; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--acero); }
+        .hero .eyebrow { color: rgba(255,255,255,0.6); }
+
+        .section-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--vino); margin-bottom: 0.5rem; font-weight: 600; }
+        .section-title { font-size: clamp(1.5rem, 4vw, var(--fs-h2)); margin-bottom: 1rem; line-height: 1.2; color: var(--carbon); }
+        .section-subtitle { font-size: 0.9375rem; color: var(--acero); max-width: 640px; font-weight: 400; line-height: 1.6; margin-inline: auto; }
+        .section-header { margin-bottom: 2.5rem; text-align: center; }
+
+        .about { padding-block: 94px; background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, var(--bg) 120px); }
+        .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
+        .about-card { background: var(--blanco); border: 1px solid var(--niebla); border-radius: var(--radius-lg); padding: 1.5rem; transition: all 0.25s; }
+        .about-card:nth-child(1):hover { border-color: #73DEA9; box-shadow: 0 10px 32px rgba(115,222,169,0.15); transform: translateY(-2px); }
+        .about-card:nth-child(2):hover { border-color: #AEC7ED; box-shadow: 0 10px 32px rgba(174,199,237,0.15); transform: translateY(-2px); }
+        .about-card:nth-child(3):hover { border-color: #FFA908; box-shadow: 0 10px 32px rgba(255,169,8,0.15); transform: translateY(-2px); }
+        .about-card h3 { font-size: 1.125rem; margin-bottom: 0.5rem; }
+        .about-card p { color: var(--acero); font-size: 0.875rem; line-height: 1.5; }
+
+        .alliance { background: var(--carbon); }
+        .alliance .section-label { color: #E94A54; }
+        .alliance .section-title { color: var(--blanco); }
+        .alliance .section-subtitle { color: rgba(255,255,255,0.8); }
+        .alliance .video-credit { color: var(--blanco); }
+        .alliance .btn--secondary { background: transparent; color: var(--blanco); border-color: rgba(255,255,255,0.4); }
+        .alliance .btn--secondary:hover { background: rgba(255,255,255,0.1); border-color: var(--blanco); }
+        .alliance-content { max-width: 720px; margin: 0 auto; text-align: center; }
+        .alliance-video { max-width: 720px; margin: 1.5rem auto; position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: var(--radius-lg); background: var(--niebla); border: 1px solid var(--niebla); }
+        .alliance-video iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .video-credit { margin-top: 0.5rem; font-size: 0.875rem; color: var(--acero); font-weight: 500; }
+
+        .team { background: var(--blanco); }
+        .team-header { margin-bottom: 2.5rem; text-align: center; }
+        .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; max-width: 860px; margin: 0 auto; }
+        @media (max-width: 768px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 520px) { .team-grid { grid-template-columns: 1fr; } }
+        .team-card { background: var(--blanco); border: 1px solid var(--niebla); border-radius: var(--radius-lg); padding: 0; text-align: center; perspective: 1000px; min-height: 390px; cursor: pointer; }
+        .team-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d; }
+        .team-card.flipped .team-card-inner { transform: rotateY(180deg); }
+        .team-card-front, .team-card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; padding: 1.5rem; border-radius: var(--radius-lg); }
+        .team-card-front { background: var(--niebla); display: flex; flex-direction: column; justify-content: flex-start; align-items: center; padding-top: 2rem; }
+        .team-card-back { background: var(--vino); transform: rotateY(180deg); display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .team-avatar { width: 64px; height: 64px; border-radius: 50%; background: #E94A54; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; font-weight: 700; color: var(--blanco); border: none; flex-shrink: 0; font-family: 'Inter', sans-serif; }
+        .team-card h3 { font-size: 1rem; margin-bottom: 0.125rem; }
+        .team-card .role { font-size: 0.8125rem; color: var(--vino); margin-bottom: 0.75rem; font-weight: 500; }
+        .team-card .description { font-size: 0.8125rem; color: var(--acero); margin-bottom: 0.75rem; line-height: 1.5; }
+        .team-card .email { font-size: 0.75rem; color: var(--acero); text-decoration: none; padding: 0.375rem 0.875rem; background: var(--niebla-50); border-radius: var(--radius-pill); display: inline-block; transition: all 0.2s; }
+        .team-card .email:hover { background: var(--vino); color: var(--blanco); }
+.team-card-back img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 0.75rem; border: 3px solid rgba(255,255,255,0.3); }
+.team-card-back h4 { color: var(--blanco); font-size: 1rem; margin-bottom: 0.25rem; }
+.team-card-back p { color: rgba(255,255,255,0.9); font-size: 0.8125rem; }
+
+        .companies { background: var(--carbon); padding: 72px 5%; }
+        .companies .section-label { color: #E94A54; }
+        .companies .section-title { color: var(--blanco); }
+        .companies .section-subtitle { color: rgba(255,255,255,0.8); }
+        .companies-header { margin-bottom: 2rem; text-align: center; }
+        .companies-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; max-width: 620px; margin: 1.5rem auto 0; }
+        .company-card { background: rgba(255,255,255,0.06); border-radius: var(--radius-lg); padding: 1.5rem; text-align: center; transition: all 0.25s; border: 1px solid rgba(255,255,255,0.08); }
+        .company-card:hover { border-color: #E94A54; box-shadow: 0 10px 32px rgba(233,74,84,0.1); transform: translateY(-2px); }
+        .company-card h3 { font-size: 1.125rem; margin-bottom: 0.5rem; color: var(--blanco); }
+        .company-card p { font-size: 0.8125rem; color: rgba(255,255,255,0.7); line-height: 1.5; }
+
+        .process { background: var(--blanco); text-align: center; }
+        .process-visual { max-width: 520px; margin: 2rem auto 0; display: flex; flex-direction: column; gap: 0.75rem; }
+        .process-step { display: flex; align-items: center; gap: 1.25rem; padding: 1.25rem; background: var(--blanco); border: 1px solid var(--niebla); border-radius: var(--radius-lg); text-align: left; transition: all 0.2s; }
+        .process-step:hover { border-color: var(--vino-300); }
+        .process-step .step-number { width: 40px; height: 40px; border-radius: 50%; background: #E94A54; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1rem; flex-shrink: 0; color: var(--blanco); font-family: 'Inter', sans-serif; }
+        .step-content h4 { font-size: 0.9375rem; margin-bottom: 0.125rem; }
+        .step-content p { font-size: 0.8125rem; color: var(--acero); }
+
+        .contact { background: var(--niebla-50); text-align: center; }
+        .contact-info { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; max-width: 800px; margin: 2rem auto 0; }
+        .contact-info .contact-item:nth-child(4) { grid-column: 2; }
+        @media (max-width: 768px) { .contact-info { grid-template-columns: repeat(2, 1fr); } .contact-info .contact-item:nth-child(4) { grid-column: auto; } }
+        .contact-item { display: flex; flex-direction: column; align-items: center; gap: 0.375rem; padding: 1.25rem; border-radius: var(--radius-lg); background: var(--blanco); border: 1px solid var(--niebla); transition: all 0.2s; }
+        .contact-item:hover { border-color: var(--vino-300); transform: translateY(-2px); box-shadow: var(--shadow-card); }
+        .contact-item .icon { width: 48px; height: 48px; border-radius: 50%; background: var(--vino-50); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; }
+        .contact-item span { color: var(--acero); font-size: 0.8125rem; }
+        .contact-item a { color: var(--carbon); text-decoration: none; font-weight: 500; font-size: 0.875rem; }
+        .contact-item a:hover { color: var(--vino); }
+
+        footer { background: var(--carbon); padding: 1.5rem 5%; text-align: center; }
+        footer p { color: var(--blanco); font-size: 0.8125rem; }
+        footer .brand { color: #E94A54; font-weight: 600; }
+
+        .iluma-note { margin: 1.5rem auto 0; max-width: 640px; padding: 1.5rem; background: rgba(233,74,84,0.08); border: 1px solid rgba(233,74,84,0.2); border-radius: var(--radius-lg); text-align: left; }
+        .iluma-note h4 { color: var(--blanco); margin-bottom: 0.75rem; font-size: 0.9375rem; }
+        .iluma-note p { font-size: 0.8125rem; color: rgba(255,255,255,0.8); margin-bottom: 0.5rem; line-height: 1.5; }
+        .iluma-note p:last-child { margin-bottom: 0; }
+        .iluma-note strong { color: #E94A54; }
+
+        /* Steps section (page 2) */
+        .steps-section { background: var(--carbon); }
+        .steps-section .section-label { color: #E94A54; }
+        .steps-section .section-title { color: var(--blanco); }
+        .steps-section .section-subtitle { color: rgba(255,255,255,0.8); }
+        .steps-container { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; }
+        .step-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-lg); padding: 2rem; position: relative; transition: all 0.25s; }
+        .step-card:hover { border-color: #E94A54; box-shadow: 0 10px 32px rgba(233,74,84,0.12); transform: translateY(-2px); }
+        .step-card .step-number { width: 44px; height: 44px; border-radius: 50%; background: #E94A54; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.125rem; color: var(--blanco); margin-bottom: 1rem; font-family: 'Inter', sans-serif; }
+        .step-card h3 { font-size: 1.25rem; margin-bottom: 0.75rem; color: var(--blanco); }
+        .step-card p { color: rgba(255,255,255,0.8); font-size: 0.9375rem; line-height: 1.6; margin-bottom: 0.5rem; }
+        .step-card .note { background: rgba(233,74,84,0.12); border-left: 3px solid #E94A54; border-radius: 0 var(--radius-md) var(--radius-md) 0; padding: 1rem; margin-top: 1rem; font-size: 0.875rem; color: rgba(255,255,255,0.85); }
+        .step-card .note strong { color: var(--blanco); }
+        .form-link { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 0.75rem; padding: 0.625rem 1.25rem; background: #E94A54; color: var(--blanco); text-decoration: none; border-radius: var(--radius-sm); font-weight: 500; font-size: 0.875rem; transition: all 0.25s; }
+        .form-link:hover { background: #d43d47; }
+        .contact-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-md); padding: 1.25rem; margin-top: 1rem; text-align: center; }
+        .contact-card .trainer-name { font-size: 1.125rem; font-weight: 600; color: var(--blanco); margin-bottom: 0.25rem; }
+        .contact-card .trainer-email { color: #E94A54; text-decoration: none; font-weight: 500; font-size: 0.875rem; }
+        .contact-card .trainer-email:hover { text-decoration: underline; }
+
+        .closing-section { background: var(--niebla-50); text-align: center; }
+        .closing-content { max-width: 640px; margin: 0 auto; }
+        .closing-section h2 { font-size: clamp(1.5rem, 4vw, var(--fs-h2)); margin-bottom: 1rem; line-height: 1.2; }
+        .closing-section p { font-size: 0.9375rem; color: var(--acero); margin-bottom: 1.5rem; }
+
+        /* Progress bar */
+        .onboarding-progress { display: flex; justify-content: center; align-items: center; gap: 0.75rem; padding: 0.875rem 5%; background: var(--blanco); border-bottom: 1px solid var(--niebla); }
+        .onboarding-progress.sticky { position: fixed; top: 60px; left: 0; right: 0; z-index: 999; padding: 0.5rem 5%; box-shadow: var(--shadow-card); }
+        .progress-step { display: flex; align-items: center; gap: 0.375rem; font-size: 0.75rem; color: var(--acero-500); font-weight: 400; }
+        .progress-step .circle { width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--acero-300); display: flex; align-items: center; justify-content: center; font-size: 0.6875rem; font-weight: 600; transition: all 0.25s; font-family: 'Inter', sans-serif; }
+        .progress-step.active .circle { border-color: #73DEA9; background: #73DEA9; color: var(--blanco); }
+        .progress-step.done .circle { border-color: var(--acero-300); background: var(--acero-300); color: var(--blanco); }
+        .progress-step.active { color: #73DEA9; font-weight: 500; }
+        .progress-step.done { color: var(--acero-500); }
+        .progress-line.done { background: var(--acero-300); }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            section { padding: 56px 5%; }
+            .contact-info { flex-direction: column; gap: 1rem; }
+            .onboarding-progress.sticky { top: 60px; gap: 0.375rem; }
+            .progress-line { width: 24px; }
+            .progress-step span { display: none; }
+            .companies-grid { grid-template-columns: 1fr; }
+        }
+
+        .page { display: none; }
+        .page.active { display: block; }
+
+        /* Page 3: Logistics & Registration */
+        .logistics-intro { background: var(--blanco); text-align: center; }
+        .download-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; max-width: 720px; margin: 2rem auto 0; }
+        .download-card { background: var(--blanco); border: 1px solid var(--niebla); border-radius: var(--radius-lg); padding: 2rem; text-align: center; transition: all 0.25s; }
+        .download-card:hover { border-color: var(--vino-300); box-shadow: var(--shadow-pop); transform: translateY(-2px); }
+        .download-card .icon { width: 56px; height: 56px; border-radius: 50%; background: var(--vino-50); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
+        .download-card .icon svg { width: 26px; height: 26px; stroke: var(--vino); }
+        .download-card h3 { font-size: 1.125rem; margin-bottom: 0.5rem; }
+        .download-card p { color: var(--acero); font-size: 0.875rem; line-height: 1.5; margin-bottom: 1rem; }
+        .download-card .btn { margin-top: 0.5rem; }
+        .logistics-process { background: var(--carbon); }
+        .logistics-process .section-label { color: #E94A54; }
+        .logistics-process .section-title { color: var(--blanco); }
+        .logistics-process .section-subtitle { color: rgba(255,255,255,0.8); }
+        .logistics-steps { max-width: 800px; margin: 2rem auto 0; display: flex; flex-direction: column; gap: 1.25rem; }
+        .logistics-step { display: flex; align-items: flex-start; gap: 1.25rem; padding: 1.5rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-lg); text-align: left; transition: all 0.25s; }
+        .logistics-step:hover { border-color: #E94A54; transform: translateY(-2px); }
+        .logistics-step .step-num { width: 40px; height: 40px; border-radius: 50%; background: #E94A54; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1rem; flex-shrink: 0; color: var(--blanco); font-family: 'Inter', sans-serif; }
+        .logistics-step .step-body { flex: 1; }
+        .logistics-step .step-body h4 { font-size: 1rem; margin-bottom: 0.375rem; color: var(--blanco); }
+        .logistics-step .step-body p { font-size: 0.875rem; color: rgba(255,255,255,0.8); line-height: 1.5; margin-bottom: 0.375rem; }
+        .logistics-step .step-body ul { margin-top: 0.5rem; padding-left: 1.25rem; color: rgba(255,255,255,0.8); font-size: 0.8125rem; }
+        .logistics-step .step-body ul li { margin-bottom: 0.25rem; }
+        .logistics-step .step-body .note { margin-top: 0.75rem; padding: 0.75rem 1rem; background: rgba(233,74,84,0.12); border-left: 3px solid #E94A54; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-size: 0.8125rem; color: rgba(255,255,255,0.85); }
+        .logistics-step .step-body .note strong { color: var(--blanco); }
+        .logistics-step .shipping-type { margin-top: 0.75rem; padding: 0.75rem 1rem; background: rgba(255,255,255,0.04); border-radius: var(--radius-md); }
+        .logistics-step .shipping-type h5 { font-size: 0.875rem; font-weight: 600; color: var(--blanco); margin-bottom: 0.25rem; }
+        .logistics-step .shipping-type p { font-size: 0.8125rem; margin-bottom: 0.25rem; }
+        .delivery-section { background: var(--blanco); text-align: center; }
+        .delivery-table-wrap { max-width: 800px; margin: 2rem auto 0; overflow-x: auto; }
+        .delivery-table-wrap table { width: 100%; border-collapse: collapse; background: var(--blanco); border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--niebla); }
+        .delivery-table-wrap th, .delivery-table-wrap td { padding: 1rem 1.25rem; text-align: center; border-bottom: 1px solid var(--niebla); font-size: 0.875rem; }
+        .delivery-table-wrap th { background: var(--vino-50); color: var(--vino); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; font-family: 'Inter', sans-serif; }
+        .delivery-table-wrap td { color: var(--carbon); }
+        .delivery-table-wrap tr:last-child td { border-bottom: none; }
+        .delivery-table-wrap tr:hover td { background: var(--niebla-50); }
+        .important-notes { max-width: 800px; margin: 2rem auto 0; text-align: left; }
+        .important-notes h3 { font-size: 1.125rem; margin-bottom: 1rem; color: var(--vino); }
+        .important-notes ul { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+        .important-notes li { display: flex; align-items: flex-start; gap: 0.75rem; padding: 1rem; background: var(--niebla-50); border-radius: var(--radius-md); font-size: 0.875rem; color: var(--acero); }
+        .important-notes li svg { width: 20px; height: 20px; stroke: var(--vino); flex-shrink: 0; margin-top: 0.125rem; }
+        .payment-section { background: var(--carbon); text-align: center; }
+        .payment-section .section-label { color: #E94A54; }
+        .payment-section .section-title { color: var(--blanco); }
+        .payment-section .section-subtitle { color: rgba(255,255,255,0.8); }
+        .payment-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; max-width: 720px; margin: 2rem auto 0; }
+        .payment-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-lg); padding: 1.5rem; text-align: left; transition: all 0.25s; }
+        .payment-card:hover { border-color: #E94A54; transform: translateY(-2px); }
+        .payment-card h3 { font-size: 1rem; color: var(--blanco); margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .payment-item { display: flex; justify-content: space-between; align-items: flex-start; padding: 0.625rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); gap: 0.75rem; }
+        .payment-item:last-child { border-bottom: none; }
+        .payment-item span:first-child { color: rgba(255,255,255,0.6); font-size: 0.8125rem; white-space: nowrap; }
+        .payment-item span:last-child { color: var(--blanco); font-size: 0.875rem; font-weight: 500; text-align: right; }
+        .payment-contact { text-align: center; }
+        .payment-contact .contact-avatar { width: 48px; height: 48px; border-radius: 50%; background: #E94A54; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1rem; margin: 0 auto 0.75rem; color: var(--blanco); font-family: 'Inter', sans-serif; }
+        .payment-contact h4 { color: var(--blanco); font-size: 1rem; margin-bottom: 0.25rem; }
+        .payment-contact p { color: rgba(255,255,255,0.6); font-size: 0.8125rem; }
+        .payment-contact a { color: #E94A54; text-decoration: none; font-size: 0.8125rem; font-weight: 500; display: inline-block; margin-top: 0.25rem; }
+        .payment-contact a:hover { text-decoration: underline; }
+
+        /* Modal form */
+        .modal-overlay { display: none; position: fixed; inset: 0; z-index: 2000; background: rgba(20,22,26,0.6); backdrop-filter: blur(4px); align-items: center; justify-content: center; padding: 1rem; }
+        .modal-overlay.open { display: flex; }
+        .modal { background: var(--blanco); border-radius: var(--radius-xl); padding: 2.5rem; max-width: 520px; width: 100%; position: relative; box-shadow: 0 24px 64px rgba(20,22,26,0.2); max-height: 90vh; overflow-y: auto; }
+        .modal-close { position: absolute; top: 1rem; right: 1rem; width: 36px; height: 36px; border-radius: 50%; border: none; background: var(--niebla-50); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; color: var(--acero); transition: all 0.2s; }
+        .modal-close:hover { background: var(--niebla); color: var(--carbon); }
+        .modal-header { background: var(--carbon); margin: -2.5rem -2.5rem 1.5rem; padding: 2rem 2.5rem; border-radius: var(--radius-xl) var(--radius-xl) 0 0; text-align: center; }
+
+        .modal-header h2 { font-size: 1.25rem; color: var(--blanco); margin-bottom: 0.375rem; }
+        .modal-header .modal-sub { color: rgba(255,255,255,0.75); font-size: 0.8125rem; margin-bottom: 0; }
+        .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+        @media (max-width: 480px) { .form-row-2 { grid-template-columns: 1fr; } }
+        .form-group { margin-bottom: 0.875rem; }
+        .form-group label { display: block; font-size: 0.8125rem; font-weight: 500; color: var(--carbon); margin-bottom: 0.375rem; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.625rem 0.875rem; border: 1px solid var(--niebla); border-radius: var(--radius-sm); font-family: 'Inter', sans-serif; font-size: 0.875rem; color: var(--carbon); background: var(--blanco); transition: border-color 0.2s; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--vino); box-shadow: 0 0 0 3px rgba(154,43,37,0.08); }
+        .form-group select { appearance: auto; }
+        .modal .btn { width: 100%; }
+
+        /* Accordion for logistics steps */
+        .logistics-step { cursor: pointer; user-select: none; }
+        .step-expandable { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+        .logistics-step.open .step-expandable { max-height: 2000px; }
+        .logistics-step .step-body h4 { position: relative; padding-right: 1.5rem; }
+        .logistics-step .step-body h4::after { content: '+'; position: absolute; right: 0; top: 0; font-size: 1.25rem; font-weight: 300; color: rgba(255,255,255,0.5); transition: transform 0.3s ease; }
+        .logistics-step.open .step-body h4::after { content: '−'; }
+    </style>
+</head>
+<body>
+    <!-- Shared Nav -->
+    <nav>
+        <a class="logo" onclick="goToPage('page1')">
+            <svg viewBox="0 0 283.46 283.46" xmlns="http://www.w3.org/2000/svg" style="height:100px;width:auto;"><path fill="#9A2B25" d="M90.56,178.53c-3.57,0-6.81-1.96-8.46-5.13L61.3,130.75l-13.42,42.1l-0.03,0.09c-1.11,3.34-4.19,5.56-7.68,5.56c-4.46,0-8.08-3.62-8.08-8.08c0-0.86,0.13-1.7,0.4-2.52l11.81-39.3c0.01-0.04,0.02-0.08,0.04-0.12c1.65-4.76,6.15-7.96,11.19-7.96c0.91,0,1.81,0.1,2.69,0.31l2.44-7.66c1.57-4.94,6.11-8.27,11.3-8.27c5.19,0,9.86,3.47,11.36,8.44l16.26,52.55c0.34,0.99,0.51,2.03,0.51,3.08C100.09,174.25,95.81,178.53,90.56,178.53 M87.38,170.68c0.63,1.18,1.84,1.91,3.18,1.91c1.98,0,3.59-1.61,3.59-3.59c0-0.4-0.07-0.8-0.2-1.18l-0.03-0.1L77.64,115.1c-0.75-2.5-3.08-4.23-5.68-4.23c-2.59,0-4.86,1.66-5.65,4.13l-2.77,8.68c1,0.92,1.84,2.01,2.47,3.22l0.25,0.5L87.38,170.68z M49.97,130.41l-11.81,39.28l-0.03,0.09c-0.07,0.22-0.11,0.45-0.11,0.68c0,1.18,0.96,2.14,2.14,2.14c0.92,0,1.73-0.58,2.03-1.45l0.03-0.08l14.18-44.5c-0.29-0.04-0.58-0.06-0.87-0.06C53.03,126.49,50.81,128.06,49.97,130.41z"/><path fill="#6B7381" d="M119.94,158.49l12.46-34.53c0.66-1.91,1.67-2.98,3.46-2.98c1.79,0,2.92,1.07,3.58,2.98l12.28,34.53c0.12,0.36,0.24,0.78,0.24,1.19c0,1.49-1.13,2.44-2.5,2.44c-1.19,0-2.15-0.66-2.56-1.91l-2.74-7.81h-16.64l-2.74,7.81c-0.42,1.25-1.37,1.91-2.56,1.91c-1.37,0-2.5-0.95-2.5-2.44C119.7,159.27,119.82,158.85,119.94,158.49z M142.43,147.52l-6.44-18.43h-0.18l-6.56,18.43H142.43z"/><path fill="#6B7381" d="M165.03,162.13c-5.13,0-6.98-2.5-6.98-7.63v-30.83c0-1.67,1.07-2.68,2.5-2.68c1.43,0,2.5,1.01,2.5,2.68v30.53c0,2.39,0.78,3.28,2.74,3.28c1.43,0,2.33,0.95,2.33,2.33c0,1.37-0.89,2.33-2.56,2.33H165.03z"/><path fill="#6B7381" d="M196.57,159.44c0,1.67-1.07,2.68-2.5,2.68c-1.43,0-2.5-1.01-2.5-2.68v-0.83h-0.06c-1.37,2.21-4,3.88-7.87,3.88c-6.2,0-9.84-4.23-9.84-10.73v-16.1c0-1.67,1.07-2.68,2.5-2.68s2.5,1.01,2.5,2.68v14.91c0,4.59,2.03,7.28,6.32,7.28c3.88,0,6.44-2.74,6.44-6.98v-15.21c0-1.67,1.07-2.68,2.5-2.68c1.43,0,2.5,1.01,2.5,2.68V159.44z"/><path fill="#6B7381" d="M205.76,159.44v-23.79c0-1.67,1.07-2.68,2.5-2.68c1.43,0,2.5,1.01,2.5,2.68v1.31h0.06c1.19-2.56,3.82-4.35,7.34-4.35c1.97,0,3.28,0.48,4.23,1.01c1.01,0.54,1.43,1.31,1.43,2.15c0,1.43-1.01,2.5-2.5,2.5c-0.36,0-0.83-0.12-1.25-0.3c-1.07-0.42-2.09-0.72-3.28-0.72c-4.29,0-6.02,3.58-6.02,8.35v13.84c0,1.67-1.07,2.68-2.5,2.68C206.83,162.13,205.76,161.11,205.76,159.44z"/><path fill="#6B7381" d="M251.38,159.74c0,1.37-1.07,2.39-2.56,2.39c-0.89,0-1.61-0.42-2.21-1.25l-1.13-1.79h-0.06c-1.91,2.15-4.59,3.4-8.77,3.4c-6.38,0-10.08-3.16-10.08-8.59c0-5.9,4.06-8.83,11.15-8.83h6.5c0.24,0,0.36-0.12,0.36-0.36v-1.37c0-4-1.85-6.26-6.86-6.26c-2.21,0-4.47,0.72-5.84,1.43c-0.48,0.24-1.01,0.42-1.43,0.42c-1.31,0-2.15-0.83-2.15-2.15c0-0.78,0.36-1.55,1.19-2.03c1.79-1.19,4.77-2.15,8.71-2.15c7.63,0,11.21,3.64,11.21,10.67v10.26c0,1.49,0.12,2.09,0.54,2.92l1.01,1.85C251.2,158.73,251.38,159.27,251.38,159.74z M244.58,152.59v-3.16c0-0.24-0.12-0.36-0.36-0.36h-5.73c-4.89,0-7.1,1.43-7.1,4.65c0,2.98,2.15,4.47,5.96,4.47C241.78,158.19,244.58,156.1,244.58,152.59z"/></svg>
+        </a>
+        <ul class="nav-links">
+            <li><a class="active" onclick="goToPage('page1')">Welcome & Team</a></li>
+            <li><a onclick="goToPage('page2')">Technical Training</a></li>
+            <li><a onclick="goToPage('page3')">Product Registration & Logistics</a></li>
+        </ul>
+    </nav>
+
+    <!-- Shared Progress Bar -->
+    <div class="onboarding-progress" id="onboardingProgress">
+        <div class="progress-step active" id="step1">
+            <div class="circle">1</div>
+            <span>Welcome & Team</span>
+        </div>
+        <div class="progress-line" id="line1"></div>
+        <div class="progress-step" id="step2">
+            <div class="circle">2</div>
+            <span>Technical Training</span>
+        </div>
+        <div class="progress-line" id="line2"></div>
+        <div class="progress-step" id="step3">
+            <div class="circle">3</div>
+            <span>Product Registration &amp; Logistics</span>
+        </div>
+    </div>
+
+    <!-- Page 1: Welcome & Team -->
+    <div class="page active" id="page1">
+        <section class="hero">
+            <div class="hero__gradient" aria-hidden="true"></div>
+            <div class="hero__pattern" aria-hidden="true"></div>
+            <div class="hero__pattern-2" aria-hidden="true"></div>
+            <div class="wrap hero__inner">
+                <div class="hero__text">
+                    <p class="eyebrow">Partner Onboarding</p>
+                    <h1 class="hero__title">Welcome to <b>Alura</b></h1>
+                    <p class="hero__lead">We are thrilled to have you as one of our business partners. This is the beginning of a long-term relationship built on trust, collaboration, and shared growth.</p>
+                    <div class="hero__cta">
+                        <a class="btn btn--primary" onclick="goToPage('page1'); setTimeout(() => document.getElementById('about').scrollIntoView({behavior:'smooth'}), 100)">Get Started</a>
+                        <a href="https://alura.bio" target="_blank" class="btn btn--secondary">Learn more</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <div class="section-header">
+                <p class="section-label">Who We Are</p>
+                <h2 class="section-title">Alura is science, innovation, and care at the service of animal health, performance, and productivity.</h2>
+                <a href="https://alura.bio" target="_blank" class="btn btn--primary" style="margin-top: 0.75rem;">
+                    Learn more about Alura
+                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+            <div class="about-grid">
+                <div class="about-card"><h3>Science</h3><p>Continuous research and development to create cutting-edge nutritional solutions backed by science.</p></div>
+                <div class="about-card"><h3>Innovation</h3><p>Innovative technologies and approaches that drive efficiency and performance in animal production.</p></div>
+                <div class="about-card"><h3>Care</h3><p>Commitment to animal welfare and quality of life as fundamental pillars of our philosophy.</p></div>
+            </div>
+        </section>
+
+        <section class="alliance">
+            <div class="alliance-content">
+                <p class="section-label">Iluma Alliance</p>
+                <h2 class="section-title">Our Ecosystem</h2>
+                <p class="section-subtitle" style="margin: 0 auto;">Alura is part of a broader vision, the Iluma Alliance. An ecosystem of companies united by a common goal: to design products that contribute to a better-nourished humanity.</p>
+                <div class="alliance-video" onclick="window.open('https://youtu.be/uCbFBrYP1-s','_blank')" style="cursor:pointer;">
+                    <img src="AlejandroMesa.png" alt="A Message from the Heart of Iluma" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;">
+                    <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:68px;height:68px;border-radius:50%;background:rgba(154,43,37,0.9);display:flex;align-items:center;justify-content:center;transition:background 0.2s;pointer-events:none;">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+                    </div>
+                </div>
+                <p class="video-credit">A Message from the Heart of Iluma — Alejandro Mesa, CEO Iluma Alliance</p>
+                <a href="https://iluma.bio" target="_blank" class="btn btn--secondary" style="margin-top: 1.5rem;">
+                    Learn more about Iluma Alliance
+                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </section>
+
+        <section class="team">
+            <div class="team-header">
+                <p class="section-label">Our Team</p>
+                <h2 class="section-title">Meet the Alura Team</h2>
+                <p class="section-subtitle">These are the people who will work hand-in-hand with you at every stage of the process. Don't hesitate to reach out. We are here to help you achieve success.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card"><div class="team-card-inner"><div class="team-card-front"><div class="team-avatar">PF</div><h3>Pilar Fernández</h3><p class="role">Distribution Director</p><p class="description">Responsible for coordinating team efforts to ensure you receive all the support needed to successfully implement and sell our products in your territory.</p><a href="mailto:pilar.fernandez@premexcorp.com" class="email">pilar.fernandez@premexcorp.com</a></div><div class="team-card-back"><img src="images/PilarFernandez.jpg" alt="Pilar Fernández"><h4>Pilar Fernández</h4><p>Distribution Director</p></div></div></div>
+                <div class="team-card"><div class="team-card-inner"><div class="team-card-front"><div class="team-avatar">JC</div><h3>Juan Cuartas</h3><p class="role">International Logistics Analyst</p><p class="description">Will help you with everything from the purchase order until the product arrives at your facilities.</p><a href="mailto:juan.cuartas@iluma.bio" class="email">juan.cuartas@iluma.bio</a></div><div class="team-card-back"><img src="images/team-03.jpg" alt="Juan Cuartas"><h4>Juan Cuartas</h4><p>International Logistics Analyst</p></div></div></div>
+                <div class="team-card"><div class="team-card-inner"><div class="team-card-front"><div class="team-avatar">HG</div><h3>Hernán Gil</h3><p class="role">Technical Manager</p><p class="description">Will help you with all technical questions and the technical support needed for our products.</p><a href="mailto:hernan.gil@alura.bio" class="email">hernan.gil@alura.bio</a></div><div class="team-card-back"><img src="images/hernan-gil.jpg" alt="Hernán Gil"><h4>Hernán Gil</h4><p>Technical Manager</p></div></div></div>
+                <div class="team-card"><div class="team-card-inner"><div class="team-card-front"><div class="team-avatar">CD</div><h3>Claudia Díaz</h3><p class="role">Logistics Coordinator</p><p class="description">Will support Juan Cuartas in case additional assistance is needed.</p><a href="mailto:claudia.diaz@iluma.bio" class="email">claudia.diaz@iluma.bio</a></div><div class="team-card-back"><img src="images/team-02.jpg" alt="Claudia Díaz"><h4>Claudia Díaz</h4><p>Logistics Coordinator</p></div></div></div>
+                <div class="team-card"><div class="team-card-inner"><div class="team-card-front"><div class="team-avatar">SP</div><h3>Stephany Pasos</h3><p class="role">Customer Service</p><p class="description">Customer service management and follow-up to ensure a seamless experience.</p><a href="mailto:stephany.pasos@iluma.bio" class="email">stephany.pasos@iluma.bio</a></div><div class="team-card-back"><img src="images/stephany.jpg" alt="Stephany Pasos"><h4>Stephany Pasos</h4><p>Customer Service</p></div></div></div>
+            </div>
+        </section>
+
+        <section class="companies">
+            <div class="companies-header">
+                <p class="section-label">Structure</p>
+                <h2 class="section-title">Role of Each Company</h2>
+            </div>
+            <div class="iluma-note">
+                <h4>Note about domains and communications</h4>
+                <p>During the process, you may receive communications from team members using the domains <strong>@iluma.bio</strong>, <strong>@premexcorp.com</strong>, or <strong>@alura.bio</strong>.</p>
+                <p>Additionally, although you will not receive emails directly from other domains like <strong>@adiquim.com</strong>, you may encounter the name Adiquim in documents or materials related to the products. Adiquim is the manufacturing plant located in Colombia where the products you purchase are produced.</p>
+            </div>
+            <p class="section-subtitle" style="text-align: center; margin: 2rem auto 0; max-width: 640px;">Together, we work as one team to offer you a seamless, reliable, and integrated experience.</p>
+            <div class="companies-grid">
+                <div class="company-card"><h3>Iluma Alliance</h3><p>The business ecosystem that brings all these companies together under the same goal.</p></div>
+                <div class="company-card"><h3>Alura</h3><p>The alliance company dedicated to animal health and additives; also your direct business partner.</p></div>
+                <div class="company-card"><h3>Adiquim</h3><p>The manufacturing plant in Colombia responsible for producing your products.</p></div>
+                <div class="company-card"><h3>Premex</h3><p>The founding company of the Alliance, with over 45 years of experience in animal nutrition and premixes.</p></div>
+            </div>
+        </section>
+
+        <section class="process">
+            <p class="section-label">Training</p>
+            <h2 class="section-title">The Technical Training Process</h2>
+            <p class="section-subtitle" style="text-align: center; margin-left: auto; margin-right: auto;">Now, let's walk you through how our collaboration will work step by step.</p>
+            <div class="process-visual">
+                <div class="process-step"><div class="step-number">1</div><div class="step-content"><h4>Technical Training</h4><p>Learn everything about our products, features, and benefits.</p></div></div>
+                <div class="process-step"><div class="step-number">2</div><div class="step-content"><h4>Product Registration & Logistics</h4><p>We will guide you through the product registration and logistics process.</p></div></div>
+                <div class="process-step"><div class="step-number">3</div><div class="step-content"><h4>Joint Growth</h4><p>Let's begin this journey to improve animal performance</p></div></div>
+            </div>
+            <div style="margin-top: 2rem; display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+                <a class="btn btn--primary" onclick="goToPage('page2')">
+                    Continue to Technical Training
+                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </section>
+
+        <section class="contact">
+            <p class="section-label">Contact</p>
+            <h2 class="section-title">Do you have questions?</h2>
+            <p class="section-subtitle" style="text-align: center; margin-left: auto; margin-right: auto;">We are here to help. Don't hesitate to reach out to any member of our team.</p>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 <span class="brand">Alura</span> Feed Additives. Part of <span class="brand">Iluma Alliance</span>.</p>
+        </footer>
+    </div>
+
+    <!-- Page 2: Technical Training -->
+    <div class="page" id="page2">
+        <section class="hero">
+            <div class="hero__gradient" aria-hidden="true"></div>
+            <div class="hero__pattern" aria-hidden="true"></div>
+            <div class="hero__pattern-2" aria-hidden="true"></div>
+            <div class="wrap hero__inner">
+                <div class="hero__text">
+                    <p class="eyebrow">Partner Onboarding</p>
+                    <h1 class="hero__title">Technical <b>Training</b></h1>
+                    <p class="hero__lead">Welcome aboard! Here you will find everything you need to know to get started as a new distributor and commercial partner.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="steps-section">
+            <div class="section-header">
+                <p class="section-label">Onboarding Process</p>
+                <h2 class="section-title">Training</h2>
+                <p class="section-subtitle">Follow the steps below to ensure a smooth and satisfying collaboration.</p>
+            </div>
+
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Alura Tools Access</h3>
+                    <p>Alura Tools is a centralized access point to all files and documents needed for our product communication. There you will find brochures, presentations, technical data sheets, safety data sheets, and other materials that will be of great support during the sales process.</p>
+                    <p>To get access to Alura Tools, you must complete the corresponding form. It is important to fill it out for each member of your team who requires access, as this is how we can assign individual credentials to each user.</p>
+                    <a href="javascript:void(0)" class="form-link" onclick="openModal('Alura Tools Credentials Request','Complete this form to request user access to Alura Tools and receive the supplementary documents. This form must be filled out for each user who needs access.')">
+                        Open the form
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Product Information</h3>
+                    <p>Once you have the credentials for Alura Tools, we recommend browsing the platform and identifying all available documents. It is important to familiarize yourself with them. Additionally, if you believe there is a document missing that could be useful, you can contact our team directly and we will support you.</p>
+                    <div class="note"><strong>Note:</strong> This is teamwork, all new ideas are welcome, so these tools are just support, but you can make the adaptations you deem necessary according to your market and needs. We are here to grow together.</div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Technical Training</h3>
+                    <p>Once you have a general context of the product, we can move forward to deeper training. In this stage, you will find two key tools:</p>
+                    <p><strong>Alura Training Hub:</strong> An educational platform that includes training modules on each product, covering both technical and commercial aspects. Currently, the platform is under development, so we recommend checking with the team if the products you will distribute are already available.</p>
+                    <a href="javascript:void(0)" class="form-link" onclick="openModal('Alura Training Hub Access','Complete this form to request access to the Alura Training Hub platform. This form must be filled out for each user who needs access.')">
+                        Request access to Alura Training Hub
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <br><br>
+                    <p><strong>1-on-1 Training:</strong> To address specific questions and delve deeper into particular topics, our technical manager, Hernán Gil, will provide personalized training to your sales team, focused on the application and benefits of our products.</p>
+                    <div class="contact-card">
+                        <p class="trainer-name">Hernán Gil</p>
+                        <a href="mailto:hernan.gil@alura.bio" class="trainer-email">hernan.gil@alura.bio</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="closing-section">
+            <div class="closing-content">
+                <p class="section-label">Next step</p>
+                <h2>Product Registration & Logistics</h2>
+                <p>It's time to learn about the logistics process</p>
+                <a class="btn btn--primary" onclick="goToPage('page3')">
+                    Continue
+                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 <span class="brand">Alura</span> Feed Additives. Part of <span class="brand">Iluma Alliance</span>.</p>
+        </footer>
+    </div>
+
+    <!-- Page 3: Product Registration & Logistics -->
+    <div class="page" id="page3">
+        <section class="hero">
+            <div class="hero__gradient" aria-hidden="true"></div>
+            <div class="hero__pattern" aria-hidden="true"></div>
+            <div class="hero__pattern-2" aria-hidden="true"></div>
+            <div class="wrap hero__inner">
+                <div class="hero__text">
+                    <p class="eyebrow">Partner Onboarding</p>
+                    <h1 class="hero__title"><span style="white-space: nowrap;">Product Registration</span><br>& <b>Logistics</b></h1>
+                    <p class="hero__lead">All the essential information to ensure smooth and transparent collaboration in product registration, purchasing, and shipping.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="logistics-intro">
+            <div class="section-header">
+                <p class="section-label">Documentation</p>
+                <h2 class="section-title">Logistics Specifications</h2>
+                <p class="section-subtitle">Download detailed information on logistics specifications, packaging formats, and lead times.</p>
+            </div>
+            <div class="download-grid">
+                <div class="download-card">
+                    <div class="icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="12" y1="18" x2="12" y2="12"></line>
+                            <line x1="9" y1="15" x2="12" y2="18"></line>
+                            <line x1="15" y1="15" x2="12" y2="18"></line>
+                        </svg>
+                    </div>
+                    <h3>Logistics Specifications</h3>
+                    <p>Packaging formats, pallet dimensions, and container capacity.</p>
+                    <a href="logistics-specifications.pdf" class="btn btn--primary" download>Download PDF</a>
+                </div>
+                <div class="download-card">
+                    <div class="icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                    </div>
+                    <h3>Delivery Lead Times</h3>
+                    <p>Preparation and transit times for all shipment types.</p>
+                    <a href="delivery-lead-time.pdf" class="btn btn--primary" download>Download PDF</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="logistics-process">
+            <div class="section-header">
+                <p class="section-label">Process</p>
+                <h2 class="section-title">Purchase Order Process</h2>
+                <p class="section-subtitle">Follow these steps to place and track your orders.</p>
+            </div>
+            <div class="logistics-steps">
+                <div class="logistics-step">
+                    <div class="step-num">1</div>
+                    <div class="step-body">
+                        <h4>Send the Purchase Order</h4>
+                        <div class="step-expandable">
+                            <p>Send the purchase order to Juan Cuartas, always copying Claudia Díaz and Pilar Fernández. You may use your own purchase order format. Please ensure it includes:</p>
+                            <ul>
+                                <li>Product name</li>
+                                <li>Quantity</li>
+                                <li>Price per unit</li>
+                                <li>Buyer and seller information: company name, address, and contact details</li>
+                                <li>Required arrival date at the destination port</li>
+                            </ul>
+                            <div class="note"><strong>Note:</strong> All quotations are made on FOB terms, so please reflect FOB prices on the purchase order. Once we receive the freight cost from the carrier, it will be included in the proforma invoice and final invoice.</div>
+                            <div class="note"><strong>Important:</strong> Let us know if you prefer to use your own carrier or if you would like us to assign one. Using a new carrier may add approximately 7 additional days to the process.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="logistics-step">
+                    <div class="step-num">2</div>
+                    <div class="step-body">
+                        <h4>Label Approval Process</h4>
+                        <div class="step-expandable">
+                            <p>Once the purchase order is received, our regulatory team will send you the proposed label for confirmation. This approval is required for each purchase order, even if the label has been approved in previous shipments. Once approved, manufacturing will begin.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="logistics-step">
+                    <div class="step-num">3</div>
+                    <div class="step-body">
+                        <h4>Logistics Coordination</h4>
+                        <div class="step-expandable">
+                            <p>Our logistics team will keep you informed about reservation details and provide all necessary shipping documents.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="logistics-step">
+                    <div class="step-num">4</div>
+                    <div class="step-body">
+                        <h4>Shipping and Tracking</h4>
+                        <div class="step-expandable">
+                            <div class="shipping-type">
+                                <h5>a. Full Container Load (FCL)</h5>
+                                <p>You will receive a tracking number and a link to monitor the shipment status.</p>
+                            </div>
+                            <div class="shipping-type">
+                                <h5>b. Less than Container Load (LCL)</h5>
+                                <p>Since this type of load changes containers during transit, detailed tracking is not possible. Our logistics team will stay in contact with the carrier and keep you informed.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="delivery-section">
+            <div class="section-header">
+                <p class="section-label">Lead Times</p>
+                <h2 class="section-title">Delivery Lead Times</h2>
+            </div>
+            <div class="delivery-table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Shipment Type</th>
+                            <th>Preparation Time</th>
+                            <th>Transit Time</th>
+                            <th>Total Estimated</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Sea Freight</td>
+                            <td>23 - 26 days</td>
+                            <td>60 - 80 days</td>
+                            <td>83 - 106 days</td>
+                        </tr>
+                        <tr>
+                            <td>Air Freight</td>
+                            <td>23 - 26 days</td>
+                            <td>7 - 10 days</td>
+                            <td>30 - 36 days</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="important-notes">
+                <h3>Important Notes</h3>
+                <ul>
+                    <li>
+                        <svg fill="none" stroke="#FF6B6B" stroke-width="2" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                        <span>Plan your orders in advance, taking into account the estimated lead times, to avoid possible delays.</span>
+                    </li>
+                    <li>
+                        <svg fill="none" stroke="#FF6B6B" stroke-width="2" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                        <span>All products shipped internationally are made to order, meaning they are manufactured from scratch after confirmation.</span>
+                    </li>
+                    <li>
+                        <svg fill="none" stroke="#FF6B6B" stroke-width="2" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                        <span>Once we complete your first shipments, we will be able to provide you with more accurate lead time estimates based on your specific logistics flow.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="payment-section">
+            <div class="section-header">
+                <p class="section-label">Payments</p>
+                <h2 class="section-title">Payment Information</h2>
+                <p class="section-subtitle">Bank details and contacts for payment management.</p>
+            </div>
+            <div class="payment-grid">
+                <div class="payment-card">
+                    <h3>Company Information</h3>
+                    <div class="payment-item"><span>Company Name</span><span>Premex Inc</span></div>
+                    <div class="payment-item"><span>Address</span><span>1307 Person St, Durham, NC 27703, USA</span></div>
+                    <div class="payment-item"><span>Tax ID</span><span>Premex Inc</span></div>
+                    <div class="payment-item"><span>Bank Account</span><span>1040130719</span></div>
+                    <div class="payment-item"><span>SWIFT Code</span><span>HELMU31</span></div>
+                </div>
+                <div class="payment-card payment-contact">
+                    <h3>Accounting Contact</h3>
+                    <div class="contact-avatar">YG</div>
+                    <h4>Yury Gómez</h4>
+                    <p>Accounting</p>
+                    <a href="mailto:invoice.premexinc@iluma.bio">invoice.premexinc@iluma.bio</a>
+                    <p>+1 919 3212199</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="closing-section">
+            <div class="closing-content">
+                <p class="section-label">Ready?</p>
+                <h2>Let's Grow Together!</h2>
+                <p>At Alura, we are committed to building lasting relationships based on trust, transparency, and a shared goal. Welcome to the alliance.</p>
+                <a class="btn btn--primary" onclick="goToPage('page1')">
+                    Back to Start
+                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 <span class="brand">Alura</span> Feed Additives. Part of <span class="brand">Iluma Alliance</span>.</p>
+        </footer>
+    </div>
+
+    <div class="modal-overlay" id="formModal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <div class="modal-header">
+                <h2 id="modalTitle">Alura Tools Credentials Request</h2>
+                <p class="modal-sub" id="modalSub">Complete this form to request user access to Alura Tools and receive the supplementary documents. This form must be filled out for each user who needs access.</p>
+            </div>
+            <form action="mailto:info@iluma.bio" method="post" enctype="text/plain" onsubmit="return handleFormSubmit(this)">
+                <h3 style="font-size:0.9375rem;margin-bottom:0.75rem;color:var(--vino);">Personal Information</h3>
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label for="formFirstName">First Name *</label>
+                        <input type="text" id="formFirstName" name="First Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="formLastName">Last Name</label>
+                        <input type="text" id="formLastName" name="Last Name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="formEmail">Email *</label>
+                    <input type="email" id="formEmail" name="Email" required>
+                </div>
+
+                <h3 style="font-size:0.9375rem;margin:1.25rem 0 0.75rem;color:var(--vino);">Company Information</h3>
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label for="formRegion">Region</label>
+                        <select id="formRegion" name="Region">
+                            <option value="">Select your region</option>
+                            <option value="asia">Asia</option>
+                            <option value="latam">LATAM</option>
+                            <option value="northamerica">North America</option>
+                            <option value="oceania">Oceania</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="formCompany">Company</label>
+                        <input type="text" id="formCompany" name="Company" placeholder="Company name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="formRole">Role within the company</label>
+                    <select id="formRole" name="Role">
+                        <option value="">Select your role</option>
+                        <option value="owner">Owner / General Manager</option>
+                        <option value="support">Technical Support</option>
+                        <option value="sales">Sales / Commercial</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <h3 style="font-size:0.9375rem;margin:1.25rem 0 0.75rem;color:var(--vino);">Languages</h3>
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label for="formLanguage">Language</label>
+                        <select id="formLanguage" name="Language">
+                            <option value="">Select language</option>
+                            <option value="spanish">Spanish</option>
+                            <option value="english">English</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="formLevel">Level</label>
+                        <select id="formLevel" name="Language Level">
+                            <option value="">Select level</option>
+                            <option value="basic">Basic</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                            <option value="native">Native</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn--primary" style="margin-top:1.25rem;">Submit Form</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function goToPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            document.querySelectorAll('.nav-links a').forEach((a, i) => {
+                a.classList.toggle('active', (pageId === 'page1' && i === 0) || (pageId === 'page2' && i === 1) || (pageId === 'page3' && i === 2));
+            });
+            const stepEls = [
+                { step: document.getElementById('step1'), line: document.getElementById('line1') },
+                { step: document.getElementById('step2'), line: document.getElementById('line2') },
+                { step: document.getElementById('step3'), line: null },
+            ];
+            if (pageId === 'page1') {
+                stepEls[0].step.className = 'progress-step active';
+                stepEls[0].line.className = 'progress-line';
+                stepEls[1].step.className = 'progress-step';
+                stepEls[1].line.className = 'progress-line';
+                stepEls[2].step.className = 'progress-step';
+            } else if (pageId === 'page2') {
+                stepEls[0].step.className = 'progress-step done';
+                stepEls[0].line.className = 'progress-line done';
+                stepEls[1].step.className = 'progress-step active';
+                stepEls[1].line.className = 'progress-line';
+                stepEls[2].step.className = 'progress-step';
+            } else {
+                stepEls[0].step.className = 'progress-step done';
+                stepEls[0].line.className = 'progress-line done';
+                stepEls[1].step.className = 'progress-step done';
+                stepEls[1].line.className = 'progress-line done';
+                stepEls[2].step.className = 'progress-step active';
+            }
+            history.pushState(null, '', '#' + pageId);
+            window.scrollTo({ top: 0 });
+        }
+
+        window.addEventListener('popstate', function () {
+            var hash = location.hash.replace('#', '') || 'page1';
+            goToPage(hash);
+        });
+        window.addEventListener('hashchange', function () {
+            var hash = location.hash.replace('#', '') || 'page1';
+            goToPage(hash);
+        });
+
+        document.querySelectorAll('.team-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                if (!e.target.closest('.email')) this.classList.toggle('flipped');
+            });
+        });
+
+        function openModal(title, subtitle) {
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalSub').textContent = subtitle;
+            document.getElementById('formModal').classList.add('open');
+        }
+        function closeModal() {
+            document.getElementById('formModal').classList.remove('open');
+        }
+        function handleFormSubmit(form) {
+            const firstName = form['First Name'].value.trim();
+            const email = form['Email'].value.trim();
+            if (!firstName || !email) return false;
+            setTimeout(() => { closeModal(); form.reset(); }, 500);
+            return true;
+        }
+        document.getElementById('formModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        document.querySelectorAll('.logistics-step').forEach(step => {
+            step.addEventListener('click', function() {
+                this.classList.toggle('open');
+            });
+        });
+
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        function observeAnimations() {
+            document.querySelectorAll('.about-card, .team-card, .company-card, .process-step, .step-card, .download-card, .logistics-step, .payment-card').forEach(el => {
+                if (!el.dataset.observed) {
+                    el.dataset.observed = 'true';
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(20px)';
+                    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    observer.observe(el);
+                }
+            });
+        }
+        observeAnimations();
+
+        window.addEventListener('scroll', function() {
+            const progress = document.getElementById('onboardingProgress');
+            progress.classList.toggle('sticky', window.scrollY > 60);
+        });
+        var hash = location.hash.replace('#', '');
+        if (hash && document.getElementById(hash)) {
+            goToPage(hash);
+        }
+    </script>
+</body>
+</html>
